@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public class Main {
+public class Sagen_Matthew {
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter("src/priorityInversion/Sagen_Matthew.txt", "UTF-8"); //this is used to print to output file
 		ArrayList<String> input = get_inputFileArray();
