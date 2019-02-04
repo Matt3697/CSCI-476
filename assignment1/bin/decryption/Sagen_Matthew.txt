@@ -1,3 +1,9 @@
+1)Bob has four kids
+2)Python
+3)Zebra and the Dog
+
+
+Output:
 lyl --> bob
 qyvcu --> works
 hyv --> for

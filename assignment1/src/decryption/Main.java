@@ -30,10 +30,9 @@ public class Main {
 			analyzeWord(word, output);
 		}
 		//for each word in the output array, output the decrypted message to the output file
-		/*for(String word: output) {
-			System.out.println(word);
-			writer.println(word);
-		}*/
+		
+		System.out.println("Output:");
+		writer.println("Output:");
 		for(int i = 0; i < input.size(); i++) {
 			System.out.println(input.get(i) + " --> " + output.get(i));
 			writer.println(input.get(i) + " --> " + output.get(i));
