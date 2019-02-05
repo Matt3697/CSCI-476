@@ -6,13 +6,22 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Sagen_Matthew {
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
-		PrintWriter writer = new PrintWriter("src/priorityInversion/Sagen_Matthew.txt", "UTF-8"); //this is used to print to output file
+		PrintWriter writer = new PrintWriter("src/creditCard/Sagen_Matthew.txt", "UTF-8"); //this is used to print to output file
 		ArrayList<String> input = get_inputFileArray();
-		
+		ArrayList<String> cards = new ArrayList<String>();
+		String regex = "\\^";
+		for(String i : input) {
+			for(String s : i.split(regex)) {
+				cards.add(s);
+				System.out.println(s);
+			}
+		}
 	}
 	
 	
@@ -22,7 +31,7 @@ public class Sagen_Matthew {
 		//ArrayList<Job> jobs = new ArrayList<Job>();			//holds individual jobs from input.
 		
         try{
-            scanner = new Scanner(new File("src/creditCard/memorydump.dmp"));
+            scanner = new Scanner(new File("memorydump.dmp"));
         }
         //throws error if the file can't be located.
         catch(Exception e){
