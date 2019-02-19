@@ -8,18 +8,32 @@ public class Main {
 	
 	public static void main(String[] args) {
 		ArrayList<String> input = new ArrayList<String>();
-		getInput(input);
-		for(String s: input) {
-			System.out.println(s);
+		ArrayList<String> dictionary = new ArrayList<String>();
+		getInput(input, dictionary);
+		for(String s : input) {
+			dictionaryAttack(input, dictionary);
 		}
 		
 	}
 	
+	public static void dictionaryAttack(ArrayList<String> input, ArrayList<String> dictionary) {
+		double duration;
+		String solution = " ";
+		long startTime = System.nanoTime();
+		
+	
+		long finishTime = System.nanoTime();
+		duration = (double)(finishTime - startTime)/ 1000000000.0;
+		System.out.print("The password for hash value " + input.get(0) + " is " + solution);
+		System.out.print(", it takes the program " + duration + " sec to recover the password\n");
+	}
 	//helper method to get input text from input.txt
-	public static void getInput(ArrayList<String> input) {
-		Scanner scanner = null;
+	public static void getInput(ArrayList<String> input, ArrayList<String> dictionary) {
+		Scanner scanner1 = null;
+		Scanner scanner2 = null;
 		try{
-			scanner = new Scanner(new File("src/md5/input.txt"));
+			scanner1 = new Scanner(new File("src/md5/input.txt"));
+			scanner2 = new Scanner(new File("src/md5/dictionary.txt"));
 	    }
 		//throws error if the file can't be located.
 		catch(Exception e){
@@ -27,9 +41,13 @@ public class Main {
 			System.exit(0);
 		}
 		//add data to input list.
-		while(scanner.hasNext()){
-			input.add(scanner.next()); 
+		while(scanner1.hasNext()){
+			input.add(scanner1.next()); 
 	    }
-		scanner.close();
+		while(scanner2.hasNext()) {
+			dictionary.add(scanner2.next());
+		}
+		scanner1.close();
+		scanner2.close();
 	}
 }
