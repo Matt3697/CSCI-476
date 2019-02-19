@@ -8,7 +8,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/*
+ * Authors: Matthew Sagen, Dylan Lynn, and Andrew Smith 
+ */
 
 public class Sagen_Matthew {
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
@@ -17,6 +19,7 @@ public class Sagen_Matthew {
 		ArrayList<String> cards = new ArrayList<String>();
 		ArrayList<String> cards2 = new ArrayList<String>();
 		ArrayList<String> track1 = new ArrayList<String>();
+		//use regular expressions to extract data from .dmp file.
 		String sp = "%";
 		String semi = ";";
 		String regex = "B[0-9]{16}\\^[a-zA-Z]+/[a-zA-Z]+\\^[0-9]{33}\\?"; 
@@ -43,6 +46,7 @@ public class Sagen_Matthew {
 		}
 		System.out.println("There are " + track1.size() + " track 1 records in the memory data");
 		writer.println("There are " + track1.size() + " track 1 records in the memory data");
+		//Loop through the track data structure and print each card holders information.
 		for(String track : track1) {
 			System.out.println("Cardholder's name: " + track.split("\\^")[1]);
 			System.out.println("Card Number: " + track.split("\\^")[0].substring(1, 5) + " " +track.split("\\^")[0].substring(5, 9) + " "+ track.split("\\^")[0].substring(9, 13)+ " "+ track.split("\\^")[0].substring(13, 17));
