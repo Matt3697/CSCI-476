@@ -18,11 +18,18 @@ public class Main {
 	
 	public static void dictionaryAttack(ArrayList<String> input, ArrayList<String> dictionary) {
 		double duration;
-		String solution = " ";
+		String solution = null;
+		//get current system time.
 		long startTime = System.nanoTime();
-		
-	
+		while(solution != input.get(0)) {
+			//do algorithm
+			for(String pass : dictionary) {
+				//convert pass using to md5
+			}
+		}
+		input.remove(0);
 		long finishTime = System.nanoTime();
+		//calculate duration based on start and finish system times.
 		duration = (double)(finishTime - startTime)/ 1000000000.0;
 		System.out.print("The password for hash value " + input.get(0) + " is " + solution);
 		System.out.print(", it takes the program " + duration + " sec to recover the password\n");
