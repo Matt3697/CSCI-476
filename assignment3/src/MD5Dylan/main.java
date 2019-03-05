@@ -1,0 +1,65 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class main {
+    public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+        ArrayList<String> input = new ArrayList<String>();
+        ArrayList<String> dictionary = new ArrayList<String>();
+        getInput(input, dictionary);
+        double duration;
+        long startTime = System.currentTimeMillis();
+        long finishTime;
+        for (String s : dictionary) {
+            String test = Test.getMd5(s);
+            for (String s1 : input) {
+                if (s1.equals(test)) {
+                    finishTime=System.currentTimeMillis();
+                    duration=(double)(finishTime - startTime)/1000;
+                    System.out.print("The password for hash value " + s1 + " is " + s);
+                    System.out.print(", it takes the program " + duration + " sec to recover the password\n");
+                } else
+                    continue;
+            }
+        }
+        return;
+
+    }
+
+    public static void dictionaryAttack(ArrayList<String> input, ArrayList<String> dictionary) {
+        double duration;
+        String solution = " ";
+        long startTime = System.nanoTime();
+
+
+        long finishTime = System.nanoTime();
+        duration = (double)(finishTime - startTime)/ 1000000000.0;
+        System.out.print("The password for hash value " + input.get(0) + " is " + solution);
+        System.out.print(", it takes the program " + duration + " sec to recover the password\n");
+    }
+    //helper method to get input text from input.txt
+    public static void getInput(ArrayList<String> input, ArrayList<String> dictionary) {
+        Scanner scanner1 = null;
+        Scanner scanner2 = null;
+        try{
+            scanner1 = new Scanner(new File("C:\\Users\\Mitch\\Documents\\Computer Science\\Artifical Intelligence\\Programs\\SecurityHW3\\src\\input.txt"));
+            scanner2 = new Scanner(new File("C:\\Users\\Mitch\\Documents\\Computer Science\\Artifical Intelligence\\Programs\\SecurityHW3\\src\\dictionary.txt"));
+        }
+        //throws error if the file can't be located.
+        catch(Exception e){
+            System.out.println("File not found.");
+            System.exit(0);
+        }
+        //add data to input list.
+        while(scanner1.hasNext()){
+            input.add(scanner1.next());
+        }
+        while(scanner2.hasNext()) {
+            dictionary.add(scanner2.next());
+        }
+        scanner1.close();
+        scanner2.close();
+    }
+}
