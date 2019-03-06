@@ -1,5 +1,7 @@
 package MD5Dylan;
-
+/*
+ * Authors: Dylan Lynn and Matthew Sagen
+ */
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -9,16 +11,21 @@ import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+    		//get input from input.txt
         ArrayList<String> input = new ArrayList<String>();
+        //get attack dictionary
         ArrayList<String> dictionary = new ArrayList<String>();
+        //printwriter to output results to Output.txt
         PrintWriter w = new PrintWriter("src/MD5Dylan/Output.txt", "UTF-8");
         getInput(input, dictionary);
         double duration;
         long startTime = System.currentTimeMillis();
         long finishTime;
+        //for each word in the dictionary compare the md5 for that word with the word from the input.txt file
         for (String s : dictionary) {
             String test = Test.getMd5(s);
             for (String s1 : input) {
+            		//if there is a match print out the value and time that it took to find the answer.
                 if (s1.equals(test)) {
                     finishTime=System.currentTimeMillis();
                     duration=(double)(finishTime - startTime)/1000;
@@ -36,17 +43,6 @@ public class main {
         return;
     }
 
-    public static void dictionaryAttack(ArrayList<String> input, ArrayList<String> dictionary) {
-        double duration;
-        String solution = " ";
-        long startTime = System.nanoTime();
-
-
-        long finishTime = System.nanoTime();
-        duration = (double)(finishTime - startTime)/ 1000000000.0;
-        System.out.print("The password for hash value " + input.get(0) + " is " + solution);
-        System.out.print(", it takes the program " + duration + " sec to recover the password\n");
-    }
     //helper method to get input text from input.txt
     public static void getInput(ArrayList<String> input, ArrayList<String> dictionary) {
         Scanner scanner1 = null;
