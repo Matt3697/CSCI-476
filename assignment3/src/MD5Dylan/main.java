@@ -1,6 +1,6 @@
 package MD5Dylan;
 /*
- * Authors: Dylan Lynn and Matthew Sagen
+ * Authors: Dylan Lynn, Matthew Sagen, and Andrew Smith
  */
 import java.io.File;
 import java.io.FileNotFoundException;
