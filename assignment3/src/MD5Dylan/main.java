@@ -1,5 +1,8 @@
+package MD5Dylan;
+
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -8,6 +11,7 @@ public class main {
     public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
         ArrayList<String> input = new ArrayList<String>();
         ArrayList<String> dictionary = new ArrayList<String>();
+        PrintWriter w = new PrintWriter("src/MD5Dylan/Output.txt", "UTF-8");
         getInput(input, dictionary);
         double duration;
         long startTime = System.currentTimeMillis();
@@ -19,13 +23,17 @@ public class main {
                     finishTime=System.currentTimeMillis();
                     duration=(double)(finishTime - startTime)/1000;
                     System.out.print("The password for hash value " + s1 + " is " + s);
+                    w.print("The password for hash value " + s1 + " is " + s);
                     System.out.print(", it takes the program " + duration + " sec to recover the password\n");
-                } else
+                    w.print(", it takes the program " + duration + " sec to recover the password\n");
+                } 
+                else {
                     continue;
+                }
             }
         }
+        w.close();
         return;
-
     }
 
     public static void dictionaryAttack(ArrayList<String> input, ArrayList<String> dictionary) {
@@ -44,8 +52,8 @@ public class main {
         Scanner scanner1 = null;
         Scanner scanner2 = null;
         try{
-            scanner1 = new Scanner(new File("C:\\Users\\Mitch\\Documents\\Computer Science\\Artifical Intelligence\\Programs\\SecurityHW3\\src\\input.txt"));
-            scanner2 = new Scanner(new File("C:\\Users\\Mitch\\Documents\\Computer Science\\Artifical Intelligence\\Programs\\SecurityHW3\\src\\dictionary.txt"));
+            scanner1 = new Scanner(new File("src/MD5Dylan/input.txt"));
+            scanner2 = new Scanner(new File("src/MD5Dylan/dictionary.txt"));
         }
         //throws error if the file can't be located.
         catch(Exception e){
